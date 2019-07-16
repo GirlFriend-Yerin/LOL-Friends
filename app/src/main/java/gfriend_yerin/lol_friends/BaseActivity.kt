@@ -5,9 +5,6 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 
 abstract class BaseActivity : AppCompatActivity() {
-
-    var parseTime = 0L
-
     override fun onDestroy() {
         super.onDestroy()
     }
