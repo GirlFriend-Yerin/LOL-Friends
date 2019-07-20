@@ -15,6 +15,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="@id/main_info_recycler"
             app:boxBackgroundMode="outline">
 
         <com.google.android.material.textfield.TextInputEditText
@@ -24,11 +25,14 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                android:singleLine="true"
+                android:maxLength="25"
+                android:hint="@string/main_summoner_hint"
                 tools:text="hello world"
         />
 
     </com.google.android.material.textfield.TextInputLayout>
-
 
     <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/main_info_recycler"
@@ -38,6 +42,7 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="@id/main_player_input"
             android:layout_marginVertical="20dp"
-            app:layout_constraintEnd_toEndOf="@id/main_player_input"/>
+            app:layout_constraintEnd_toEndOf="@id/main_player_input"
+            android:visibility="gone"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

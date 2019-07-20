@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="play_champ_size">75dp</dimen>
+    <dimen name="playinfo_team_img_size">17sp</dimen>
+    <dimen name="playinfo_team_txt_size">15sp</dimen>
+    <dimen name="playinfo_kda_size">25sp</dimen>
+</resources>

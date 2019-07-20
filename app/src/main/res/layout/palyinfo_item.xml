@@ -1,0 +1,242 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="5dp"
+>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/playinfo_head"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent">
+
+        <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/playinfo_game_time"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="x분 x시간 전"
+        />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/payinfo_body"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/playinfo_head"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+    >
+        <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/playinfo_champ_image"
+                android:layout_width="@dimen/play_champ_size"
+                android:layout_height="@dimen/play_champ_size"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                tools:src="@drawable/ic_launcher_background"
+        />
+
+        <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/playinfo_kda"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toTopOf="parent"
+                android:textSize="@dimen/playinfo_kda_size"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toEndOf="@id/playinfo_champ_image"
+                app:layout_constraintEnd_toStartOf="@id/playinfo_team"
+                tools:text="3/5/4"
+         />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/playinfo_kda_per"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/playinfo_kda"
+            app:layout_constraintStart_toEndOf="@id/playinfo_champ_image"
+            app:layout_constraintEnd_toStartOf="@id/playinfo_team"
+            tools:text="perfect"
+        />
+
+        <TableLayout
+                android:id="@+id/playinfo_team"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+            <TableRow>
+                <ImageView
+                        android:id="@+id/playinfo_my_team_top_champ"
+                        android:layout_height="@dimen/playinfo_team_img_size"
+                        android:layout_width="@dimen/playinfo_team_img_size"
+                        tools:src="@android:color/holo_blue_bright"
+                        android:layout_marginEnd="5dp"/>
+
+                <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/playinfo_my_team_top_name"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="@dimen/playinfo_team_txt_size"
+                        tools:text="myTop"
+                        android:layout_marginEnd="10dp"
+                />
+                <ImageView
+                        android:id="@+id/playinfo_enemy_top_champ"
+                        android:layout_height="@dimen/playinfo_team_img_size"
+                        android:layout_width="@dimen/playinfo_team_img_size"
+                        tools:src="@android:color/holo_red_light"
+                        android:layout_marginEnd="5dp"/>
+
+                <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/playinfo_enemy_top_name"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="@dimen/playinfo_team_txt_size"
+                        tools:text="enTop"
+                        android:layout_marginEnd="10dp"
+                />
+            </TableRow>
+            <TableRow>
+                <ImageView
+                        android:id="@+id/playinfo_my_team_jg_champ"
+                        android:layout_height="@dimen/playinfo_team_img_size"
+                        android:layout_width="@dimen/playinfo_team_img_size"
+                        tools:src="@android:color/holo_blue_bright"
+                        android:layout_marginEnd="5dp"/>
+
+                <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/playinfo_my_team_jg_name"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="@dimen/playinfo_team_txt_size"
+                        tools:text="myJg"
+                        android:layout_marginEnd="10dp"
+                />
+                <ImageView
+                        android:id="@+id/playinfo_enemy_jg_champ"
+                        android:layout_height="@dimen/playinfo_team_img_size"
+                        android:layout_width="@dimen/playinfo_team_img_size"
+                        tools:src="@android:color/holo_red_light"
+                        android:layout_marginEnd="5dp"/>
+
+                <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/playinfo_enemy_jg_name"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="@dimen/playinfo_team_txt_size"
+                        tools:text="enJg"
+                        android:layout_marginEnd="10dp"
+                />
+            </TableRow>
+            <TableRow>
+                <ImageView
+                        android:id="@+id/playinfo_my_team_mid_champ"
+                        android:layout_height="@dimen/playinfo_team_img_size"
+                        android:layout_width="@dimen/playinfo_team_img_size"
+                        tools:src="@android:color/holo_blue_bright"
+                        android:layout_marginEnd="5dp"/>
+
+                <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/playinfo_my_team_mid_name"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="@dimen/playinfo_team_txt_size"
+                        tools:text="myMid"
+                        android:layout_marginEnd="10dp"
+                />
+                <ImageView
+                        android:id="@+id/playinfo_enemy_mid_champ"
+                        android:layout_height="@dimen/playinfo_team_img_size"
+                        android:layout_width="@dimen/playinfo_team_img_size"
+                        tools:src="@android:color/holo_red_light"
+                        android:layout_marginEnd="5dp"/>
+
+                <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/playinfo_enemy_mid_name"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="@dimen/playinfo_team_txt_size"
+                        tools:text="enMid"
+                        android:layout_marginEnd="10dp"
+                />
+            </TableRow>
+            <TableRow>
+                <ImageView
+                        android:id="@+id/playinfo_my_team_ad_champ"
+                        android:layout_height="@dimen/playinfo_team_img_size"
+                        android:layout_width="@dimen/playinfo_team_img_size"
+                        tools:src="@android:color/holo_blue_bright"
+                        android:layout_marginEnd="5dp"/>
+
+                <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/playinfo_my_team_ad_name"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="@dimen/playinfo_team_txt_size"
+                        tools:text="myAd"
+                        android:layout_marginEnd="10dp"
+                />
+                <ImageView
+                        android:id="@+id/playinfo_enemy_ad_champ"
+                        android:layout_height="@dimen/playinfo_team_img_size"
+                        android:layout_width="@dimen/playinfo_team_img_size"
+                        tools:src="@android:color/holo_red_light"
+                        android:layout_marginEnd="5dp"/>
+
+                <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/playinfo_enemy_ad_name"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="@dimen/playinfo_team_txt_size"
+                        tools:text="enAd"
+                        android:layout_marginEnd="10dp"
+                />
+            </TableRow>
+            <TableRow>
+                <ImageView
+                        android:id="@+id/playinfo_my_team_sup_champ"
+                        android:layout_height="@dimen/playinfo_team_img_size"
+                        android:layout_width="@dimen/playinfo_team_img_size"
+                        tools:src="@android:color/holo_blue_bright"
+                        android:layout_marginEnd="5dp"/>
+
+                <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/playinfo_my_team_sup_name"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="@dimen/playinfo_team_txt_size"
+                        tools:text="mySup"
+                        android:layout_marginEnd="10dp"
+                />
+                <ImageView
+                        android:id="@+id/playinfo_enemy_sup_champ"
+                        android:layout_height="@dimen/playinfo_team_img_size"
+                        android:layout_width="@dimen/playinfo_team_img_size"
+                        tools:src="@android:color/holo_red_light"
+                        android:layout_marginEnd="5dp"/>
+
+                <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/playinfo_enemy_sup_name"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="@dimen/playinfo_team_txt_size"
+                        tools:text="enSup"
+                        android:layout_marginEnd="10dp"
+                />
+            </TableRow>
+        </TableLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
