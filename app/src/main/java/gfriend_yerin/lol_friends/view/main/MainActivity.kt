@@ -7,8 +7,8 @@ import gfriend_yerin.lol_friends.data.playinfo.PlayInfoVO
 
 class MainActivity : BaseActivity(), MainContract.View{
 
-
     private lateinit var presenter : MainContract.Presenter
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

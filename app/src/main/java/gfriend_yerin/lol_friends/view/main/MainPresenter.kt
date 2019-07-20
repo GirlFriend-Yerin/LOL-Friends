@@ -1,6 +1,6 @@
 package gfriend_yerin.lol_friends.view.main
 
-import gfriend_yerin.lol_friends.data.playinfo.player.PlayerVO
+import gfriend_yerin.lol_friends.data.player.PlayerVO
 
 class MainPresenter : MainContract.Presenter {
     override fun searchEntries(player: PlayerVO) {
