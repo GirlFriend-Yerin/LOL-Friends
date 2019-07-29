@@ -15,7 +15,6 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toBottomOf="@id/main_info_recycler"
             app:boxBackgroundMode="outline">
 
         <com.google.android.material.textfield.TextInputEditText
@@ -30,9 +29,19 @@
                 android:maxLength="25"
                 android:hint="@string/main_summoner_hint"
                 tools:text="hello world"
+                android:text="Expert Nidalee"
         />
 
     </com.google.android.material.textfield.TextInputLayout>
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/main_temp"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintTop_toBottomOf="@id/main_player_input"
+        app:layout_constraintBottom_toBottomOf="parent"
+        />
+
 
     <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/main_info_recycler"

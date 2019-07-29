@@ -3,12 +3,10 @@ package gfriend_yerin.lol_friends.view.main.playInfo
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.BaseAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
-import gfriend_yerin.lol_friends.R
-import gfriend_yerin.lol_friends.data.playinfo.PlayInfoVO
+import gfriend_yerin.lol_friends.data.value_object.PlayInfoVO
 import kotlinx.android.synthetic.main.palyinfo_item.view.*
 
 class PlayInfoAdapter(private val items : ArrayList<PlayInfoVO>,

@@ -1,6 +1,4 @@
-package gfriend_yerin.lol_friends.data.playinfo
-
-import gfriend_yerin.lol_friends.data.player.PlayerVO
+package gfriend_yerin.lol_friends.data.value_object
 
 class PlayInfoVO(builder: Builder) {
     private var code = 0
