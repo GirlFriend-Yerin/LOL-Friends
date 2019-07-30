@@ -2,7 +2,7 @@ package gfriend_yerin.lol_friends.view.main
 
 import android.os.Bundle
 import android.view.KeyEvent
-import gfriend_yerin.lol_friends.BaseActivity
+import gfriend_yerin.lol_friends.view.BaseActivity
 import gfriend_yerin.lol_friends.R
 import gfriend_yerin.lol_friends.data.value_object.PlayInfoVO
 import kotlinx.android.synthetic.main.activity_main.*
@@ -32,5 +32,17 @@ class MainActivity : BaseActivity(), MainContract.View{
 
     private fun search(name : String){
 
+    }
+
+    private fun tierIcon(flag : String) : Int{
+        when(flag){
+            "iron" -> return R.drawable.emblem_iron
+            "bronze" -> return R.drawable.emblem_bronze
+            "sliver" -> return R.drawable.emblem_silver
+            "gold" -> return R.drawable.emblem_gold
+            "platinum" -> return R.drawable.emblem_platinum
+        }
+
+        return 0
     }
 }

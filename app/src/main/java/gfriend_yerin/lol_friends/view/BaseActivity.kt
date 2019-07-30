@@ -1,4 +1,4 @@
-package gfriend_yerin.lol_friends
+package gfriend_yerin.lol_friends.view
 
 import android.os.Bundle
 import android.widget.Toast

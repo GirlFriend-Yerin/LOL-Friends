@@ -14,7 +14,7 @@ object PlayerInfo {
 
     fun getPlayerVo(name : String, playerListener: RiotPlayerListener){
         val retrofit = Retrofit.Builder()
-            .baseUrl("https://kr.api.riotgames.com")
+            .baseUrl(RiotService.baseUrl)
             .addConverterFactory(GsonConverterFactory.create())
             .build()
             .create(RiotService::class.java)
