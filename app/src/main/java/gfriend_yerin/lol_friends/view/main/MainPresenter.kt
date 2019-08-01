@@ -19,7 +19,7 @@ class MainPresenter : MainContract.Presenter {
             }
         })
     }
-    
+
     private fun searchEntries(player: PlayerVO) {
         PlayerInfo.getPlayerMatches(player.accountId, object : RiotMatchListener{
             override fun onResult(isSuccess: Boolean, result: List<PlayInfoVO>?) {

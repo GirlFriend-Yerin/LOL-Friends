@@ -2,6 +2,7 @@ package gfriend_yerin.lol_friends.data.remote
 
 import android.util.Log
 import gfriend_yerin.lol_friends.BuildConfig
+import gfriend_yerin.lol_friends.data.value_object.LeagueVO
 import gfriend_yerin.lol_friends.data.value_object.PlayInfoVO
 import gfriend_yerin.lol_friends.data.value_object.PlayerVO
 import retrofit2.Call
@@ -65,6 +66,32 @@ object PlayerInfo {
                 }
                 else
                     matchListener.onResult(false, null)
+            }
+        })
+    }
+
+    fun getPlayerLeague(id : String, rankListener : RiotRankListener) {
+
+        val retrofit = Retrofit.Builder().baseUrl(RiotService.baseUrl)
+            .addConverterFactory(GsonConverterFactory.create())
+            .build()
+            .create(RiotService::class.java)
+
+        val repos = retrofit.playerLeagueAsync(id, BuildConfig.api_key)
+
+        repos.enqueue(object : Callback<List<LeagueVO>> {
+
+            override fun onFailure(call: Call<List<LeagueVO>>, t: Throwable) {
+                Log.e(TAG, t.localizedMessage)
+            }
+
+            override fun onResponse(call: Call<List<LeagueVO>>, response: Response<List<LeagueVO>>) {
+                if (response.isSuccessful){
+                    val res : List<LeagueVO>? = response.body()
+                    rankListener.onResult(true, res)
+                }
+                else
+                    rankListener.onResult(false, null)
             }
         })
     }
