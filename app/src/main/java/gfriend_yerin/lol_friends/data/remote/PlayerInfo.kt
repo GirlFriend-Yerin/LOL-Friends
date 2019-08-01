@@ -3,6 +3,7 @@ package gfriend_yerin.lol_friends.data.remote
 import android.util.Log
 import gfriend_yerin.lol_friends.BuildConfig
 import gfriend_yerin.lol_friends.data.value_object.LeagueVO
+import gfriend_yerin.lol_friends.data.value_object.MatchVO
 import gfriend_yerin.lol_friends.data.value_object.PlayInfoVO
 import gfriend_yerin.lol_friends.data.value_object.PlayerVO
 import retrofit2.Call
@@ -24,8 +25,6 @@ object PlayerInfo {
 
         val repos = retrofit.playerRepoAsync(name, BuildConfig.api_key)
 
-        Log.e(TAG, repos.request().url().toString())
-
         repos.enqueue(object : Callback<PlayerVO> {
 
             override fun onFailure(call: Call<PlayerVO>, t: Throwable) {
@@ -36,8 +35,8 @@ object PlayerInfo {
             override fun onResponse(call: Call<PlayerVO>, response: Response<PlayerVO>) {
                 if (response.isSuccessful) {
                     val res: PlayerVO? = response.body()
+                    Log.e(TAG, res!!.accountId)
                     playerListener.onResult(true, res)
-                    Log.e("", res!!.name)
                 } else
                     playerListener.onResult(false, null)
             }
@@ -53,15 +52,21 @@ object PlayerInfo {
 
         val repos = retrofit.playerMatchesAsync(accId, BuildConfig.api_key)
 
-        repos.enqueue(object : Callback<List<PlayInfoVO>> {
+        Log.e(TAG, repos.request().url().toString())
 
-            override fun onFailure(call: Call<List<PlayInfoVO>>, t: Throwable) {
+        repos.enqueue(object : Callback<MatchVO> {
+
+            override fun onFailure(call: Call<MatchVO>, t: Throwable) {
                 Log.e(TAG, t.localizedMessage)
             }
 
-            override fun onResponse(call: Call<List<PlayInfoVO>>, response: Response<List<PlayInfoVO>>) {
+            override fun onResponse(call: Call<MatchVO>, response: Response<MatchVO>) {
                 if (response.isSuccessful){
-                    val res : List<PlayInfoVO>? = response.body()
+                    val res : MatchVO? = response.body()
+
+                    for ( play in res!!.matches)
+                        Log.e("Match", play.lane + " / " + play.timestamp)
+
                     matchListener.onResult(true, res)
                 }
                 else

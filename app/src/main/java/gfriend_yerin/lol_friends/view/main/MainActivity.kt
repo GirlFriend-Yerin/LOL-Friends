@@ -13,7 +13,7 @@ import kotlinx.android.synthetic.main.activity_main.*
 class MainActivity : BaseActivity(), MainContract.View{
 
     companion object {
-        private val TAG = "MainAcitivty"
+        private const val TAG = "MainActivity"
     }
 
     private lateinit var presenter : MainContract.Presenter
@@ -23,6 +23,7 @@ class MainActivity : BaseActivity(), MainContract.View{
         setContentView(R.layout.activity_main)
 
         presenter = MainPresenter()
+        presenter.setView(this)
 
         main_player_edit.setOnKeyListener { _, keyCode, keyEvent ->
             if (keyEvent.action == KeyEvent.ACTION_DOWN && keyCode == KeyEvent.KEYCODE_ENTER){
@@ -35,7 +36,7 @@ class MainActivity : BaseActivity(), MainContract.View{
 
     override fun updateEntries(entries: ArrayList<PlayInfoVO>) {
         for (info in entries){
-            Log.e(TAG, info.name)
+            Log.e(TAG, info!!.timestamp.toString())
         }
     }
 
