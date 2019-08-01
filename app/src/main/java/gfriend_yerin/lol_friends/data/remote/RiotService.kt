@@ -1,6 +1,7 @@
 package gfriend_yerin.lol_friends.data.remote
 
 import gfriend_yerin.lol_friends.data.value_object.LeagueVO
+import gfriend_yerin.lol_friends.data.value_object.PlayInfoVO
 import gfriend_yerin.lol_friends.data.value_object.PlayerVO
 import retrofit2.Call
 import retrofit2.http.GET
@@ -16,9 +17,9 @@ interface RiotService {
     @GET ("/lol/summoner/v4/summoners/by-name/{name}")
     fun playerRepoAsync(@Path("name") name : String, @Query("api_key") apiKey : String) : Call<PlayerVO>
 
-    @GET ("/lol/summoner/v4/summoners/by-name/{name}")
-    fun playerRepoSync(@Path("name") name : String, @Query("api_key") apiKey : String) : PlayerVO
-
     @GET ("/lol/league/v4/entries/by-summoner/{encId}")
-    fun playerLeageAsync(@Path("encId") encId : String, @Query("api_key") apiKey : String) : Call<List<LeagueVO>>
+    fun playerLeagueAsync(@Path("encId") encId : String, @Query("api_key") apiKey : String) : Call<List<LeagueVO>>
+
+    @GET ("/lol/match/v4/matchlists/by-account/{accId}")
+    fun playerMatchesAsync(@Path("accid") accId :String, @Query("api_key") apiKey : String) : Call<List<PlayInfoVO>>
 }

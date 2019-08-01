@@ -7,11 +7,11 @@ interface MainContract {
 
     interface View{
         fun updateEntries(entries : ArrayList<PlayInfoVO>)
+        fun updateUserProfile(player : PlayerVO?)
     }
 
     interface Presenter{
         fun setView(view : View)
-        fun searchEntries(player : PlayerVO)
         fun findUser(name : String)
     }
 }
