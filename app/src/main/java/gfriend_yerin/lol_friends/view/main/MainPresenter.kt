@@ -16,6 +16,7 @@ class MainPresenter : MainContract.Presenter {
             override fun onResult(isSuccess: Boolean, playerVO: PlayerVO?) {
                 if (isSuccess) {
                     view.updateUserProfile(playerVO)
+                    searchLeague(playerVO!!)
                     searchEntries(playerVO!!)
                 }
                 else
@@ -25,18 +26,19 @@ class MainPresenter : MainContract.Presenter {
     }
 
     private fun searchLeague(player: PlayerVO){
-
-    }
-
-    private fun searchEntries(player: PlayerVO) {
         PlayerInfo.getPlayerLeague(player.id, object : RiotRankListener {
             override fun onResult(isSuccess: Boolean, result: List<LeagueVO>?) {
                 if (isSuccess){
                     for (item in result!!)
                         Log.e("TAG", item.queueType + " / " + item.tier + " / " + item.leaguePoint)
+                    view.updateUserRank(result)
                 }
             }
         })
+    }
+
+    private fun searchEntries(player: PlayerVO) {
+
 
         PlayerInfo.getPlayerMatches(player.accountId, object : RiotMatchListener{
             override fun onResult(isSuccess: Boolean, result: MatchVO?) {

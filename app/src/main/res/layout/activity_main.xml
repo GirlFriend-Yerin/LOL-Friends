@@ -72,7 +72,10 @@
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <include
+            android:id="@+id/main_summoner_rank_layout"
             layout="@layout/summoner_rank"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
             app:layout_constraintTop_toBottomOf="@id/main_summoner_layout"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"

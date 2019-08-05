@@ -3,13 +3,17 @@ package gfriend_yerin.lol_friends.view.main
 import android.os.Bundle
 import android.util.Log
 import android.view.KeyEvent
+import android.widget.ImageView
+import android.widget.TextView
 import android.widget.Toast
+import com.bumptech.glide.Glide
 import gfriend_yerin.lol_friends.view.BaseActivity
 import gfriend_yerin.lol_friends.R
 import gfriend_yerin.lol_friends.data.value_object.LeagueVO
 import gfriend_yerin.lol_friends.data.value_object.PlayInfoVO
 import gfriend_yerin.lol_friends.data.value_object.PlayerVO
 import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.summoner_rank.*
 
 class MainActivity : BaseActivity(), MainContract.View{
 
@@ -35,7 +39,7 @@ class MainActivity : BaseActivity(), MainContract.View{
         }
     }
 
-    override fun updateEntries(entries: ArrayList<PlayInfoVO>) {
+    override fun updateEntries(entries: List<PlayInfoVO>) {
         for (info in entries){
             Log.e(TAG, info.timestamp.toString())
         }
@@ -49,15 +53,35 @@ class MainActivity : BaseActivity(), MainContract.View{
         }
     }
 
-    override fun updateUserRank(ranks: ArrayList<LeagueVO>) {
+    override fun updateUserRank(ranks: List<LeagueVO>) {
         for (league in ranks){
             val tierDrawable = tierIcon(league.tier)
-            val score = league.leaguePoint
+            Glide.with(this).load((tierDrawable)).into(tierImageView(league.queueType))
+            tierTextView(league.queueType).text = league.tier + ' ' + league.rank + ' ' + league.leaguePoint
         }
     }
 
     private fun search(name : String){
         presenter.updateUser(name)
+    }
+
+    private fun tierImageView(queueType : String) : ImageView {
+        when(queueType){
+            "RANKED_SOLO_5x5" -> return main_solo_tier_image
+            "RANKED_TEAM_5x5" -> return main_team_tier_image
+            "RANKED_TFT" -> return main_tft_tier_image
+        }
+        return main_tbt_tier_image
+    }
+
+    private fun tierTextView(queueType : String) : TextView {
+        when(queueType){
+            "RANKED_SOLO_5x5" -> return main_solo_tier_text
+            "RANKED_TEAM_5x5" -> return main_team_tier_text
+            "RANKED_TFT" -> return main_tft_tier_text
+        }
+
+        return main_tbt_tier_text
     }
 
     private fun tierIcon(flag : String) : Int{
