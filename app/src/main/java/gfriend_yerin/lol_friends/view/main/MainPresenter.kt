@@ -1,23 +1,26 @@
 package gfriend_yerin.lol_friends.view.main
 
-import android.util.Log
-import gfriend_yerin.lol_friends.data.remote.PlayerInfo
-import gfriend_yerin.lol_friends.data.remote.RiotMatchListener
-import gfriend_yerin.lol_friends.data.remote.RiotPlayerListener
-import gfriend_yerin.lol_friends.data.remote.RiotRankListener
+import gfriend_yerin.lol_friends.data.RiotDataRepository
+import gfriend_yerin.lol_friends.data.RiotSource
 import gfriend_yerin.lol_friends.data.value_object.LeagueVO
 import gfriend_yerin.lol_friends.data.value_object.MatchVO
-import gfriend_yerin.lol_friends.data.value_object.PlayInfoVO
 import gfriend_yerin.lol_friends.data.value_object.PlayerVO
 
 class MainPresenter : MainContract.Presenter {
+
+    private lateinit var view : MainContract.View
+
+    override fun setView(view: MainContract.View) {
+        this.view = view
+    }
+
     override fun updateUser(name: String) {
-        PlayerInfo.getPlayerVo(name, object : RiotPlayerListener {
+        RiotDataRepository.getPlayerInfo(name, object : RiotSource.PlayerListener {
             override fun onResult(isSuccess: Boolean, playerVO: PlayerVO?) {
                 if (isSuccess) {
                     view.updateUserProfile(playerVO)
                     searchLeague(playerVO!!)
-                    searchEntries(playerVO!!)
+                    searchEntries(playerVO)
                 }
                 else
                     view.updateUserProfile(null)
@@ -26,21 +29,17 @@ class MainPresenter : MainContract.Presenter {
     }
 
     private fun searchLeague(player: PlayerVO){
-        PlayerInfo.getPlayerLeague(player.id, object : RiotRankListener {
+        RiotDataRepository.getRankInfo(player.id, object : RiotSource.RankListener {
             override fun onResult(isSuccess: Boolean, result: List<LeagueVO>?) {
                 if (isSuccess){
-                    for (item in result!!)
-                        Log.e("TAG", item.queueType + " / " + item.tier + " / " + item.leaguePoint)
-                    view.updateUserRank(result)
+                    view.updateUserRank(result!!)
                 }
             }
         })
     }
 
     private fun searchEntries(player: PlayerVO) {
-
-
-        PlayerInfo.getPlayerMatches(player.accountId, object : RiotMatchListener{
+        RiotDataRepository.getMatchInfo(player.accountId, object : RiotSource.MatchListener{
             override fun onResult(isSuccess: Boolean, result: MatchVO?) {
                 if (isSuccess){
                     //view.updateEntries(result)
@@ -49,12 +48,6 @@ class MainPresenter : MainContract.Presenter {
                     //view.updateEntries(ArrayList(result))
             }
         })
-    }
-
-    private lateinit var view : MainContract.View
-
-    override fun setView(view: MainContract.View) {
-        this.view = view
     }
 
 }

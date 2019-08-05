@@ -13,6 +13,7 @@ interface RiotService {
 
     companion object {
         const val baseUrl : String = "https://kr.api.riotgames.com"
+        const val dragonBaseUrl : String = "https://ddragon.leagueoflegends.com"
     }
 
     @GET ("/lol/summoner/v4/summoners/by-name/{name}")
@@ -23,4 +24,7 @@ interface RiotService {
 
     @GET ("/lol/match/v4/matchlists/by-account/{accId}")
     fun playerMatchesAsync(@Path("accId") accId :String, @Query("api_key") apiKey : String) : Call<MatchVO>
+
+    @GET ("/api/versions.json")
+    fun loadRiotAPIVersion() : Call<List<String>>
 }
