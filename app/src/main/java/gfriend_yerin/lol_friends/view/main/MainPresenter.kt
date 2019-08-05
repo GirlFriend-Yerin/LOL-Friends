@@ -11,7 +11,7 @@ import gfriend_yerin.lol_friends.data.value_object.PlayInfoVO
 import gfriend_yerin.lol_friends.data.value_object.PlayerVO
 
 class MainPresenter : MainContract.Presenter {
-    override fun findUser(name: String) {
+    override fun updateUser(name: String) {
         PlayerInfo.getPlayerVo(name, object : RiotPlayerListener {
             override fun onResult(isSuccess: Boolean, playerVO: PlayerVO?) {
                 if (isSuccess) {
@@ -22,6 +22,10 @@ class MainPresenter : MainContract.Presenter {
                     view.updateUserProfile(null)
             }
         })
+    }
+
+    private fun searchLeague(player: PlayerVO){
+
     }
 
     private fun searchEntries(player: PlayerVO) {

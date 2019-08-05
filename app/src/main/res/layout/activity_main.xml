@@ -69,42 +69,14 @@
                 tools:text="Summoner"
         />
 
-        <androidx.constraintlayout.widget.ConstraintLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent">
-
-            <androidx.appcompat.widget.AppCompatTextView
-                    android:id="@+id/main_summoner_tft_text"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    android:text="TFT"/>
-
-            <androidx.appcompat.widget.AppCompatImageView
-                    android:id="@+id/main_summoner_tier_img"
-                    android:layout_width="15dp"
-                    android:layout_height="15dp"
-                    app:layout_constraintTop_toTopOf="@id/main_summoner_tft_text"
-                    app:layout_constraintStart_toEndOf="@id/main_summoner_tft_text"
-                    tools:src="@drawable/ic_launcher_background"/>
-
-            <androidx.appcompat.widget.AppCompatTextView
-                android:id="@+id/main_summoner_tier_info"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                app:layout_constraintStart_toEndOf="@id/main_summoner_tier_img"
-                app:layout_constraintTop_toTopOf="@id/main_summoner_tier_img"
-                tools:text="Bronze 3"
-                />
-
-        </androidx.constraintlayout.widget.ConstraintLayout>
-
     </androidx.constraintlayout.widget.ConstraintLayout>
 
+    <include
+            layout="@layout/summoner_rank"
+            app:layout_constraintTop_toBottomOf="@id/main_summoner_layout"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+    />
 
     <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/main_info_recycler"

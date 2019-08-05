@@ -6,6 +6,7 @@ import android.view.KeyEvent
 import android.widget.Toast
 import gfriend_yerin.lol_friends.view.BaseActivity
 import gfriend_yerin.lol_friends.R
+import gfriend_yerin.lol_friends.data.value_object.LeagueVO
 import gfriend_yerin.lol_friends.data.value_object.PlayInfoVO
 import gfriend_yerin.lol_friends.data.value_object.PlayerVO
 import kotlinx.android.synthetic.main.activity_main.*
@@ -36,7 +37,7 @@ class MainActivity : BaseActivity(), MainContract.View{
 
     override fun updateEntries(entries: ArrayList<PlayInfoVO>) {
         for (info in entries){
-            Log.e(TAG, info!!.timestamp.toString())
+            Log.e(TAG, info.timestamp.toString())
         }
     }
 
@@ -48,17 +49,28 @@ class MainActivity : BaseActivity(), MainContract.View{
         }
     }
 
+    override fun updateUserRank(ranks: ArrayList<LeagueVO>) {
+        for (league in ranks){
+            val tierDrawable = tierIcon(league.tier)
+            val score = league.leaguePoint
+        }
+    }
+
     private fun search(name : String){
-        presenter.findUser(name)
+        presenter.updateUser(name)
     }
 
     private fun tierIcon(flag : String) : Int{
         when(flag){
-            "iron" -> return R.drawable.emblem_iron
-            "bronze" -> return R.drawable.emblem_bronze
-            "sliver" -> return R.drawable.emblem_silver
-            "gold" -> return R.drawable.emblem_gold
-            "platinum" -> return R.drawable.emblem_platinum
+            "IRON" -> return R.drawable.emblem_iron
+            "BRONZE" -> return R.drawable.emblem_bronze
+            "SLIVER" -> return R.drawable.emblem_silver
+            "GOLD" -> return R.drawable.emblem_gold
+            "PLATINUM" -> return R.drawable.emblem_platinum
+            "DIAMOND" -> return R.drawable.emblem_diamond
+            "MASTER" -> return R.drawable.emblem_master
+            "GRANDMASTER" -> return R.drawable.emblem_grandmaster
+            "CHALLENGER" -> return R.drawable.emblem_challenger
         }
         return 0
     }
